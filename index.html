@@ -120,11 +120,21 @@
     .announce {
       background: var(--navy);
       color: rgba(255,255,255,.85);
-      text-align: center;
-      padding: .7rem 1.5rem;
+      padding: .7rem 0;
       font-size: .6rem;
       letter-spacing: .32em;
       text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .announce-inner {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
     /* ══ NAV — sticky, always white ══════════════════════════════════ */
@@ -525,9 +535,49 @@
     .d3 { transition-delay: .3s !important; }
 
     /* ══ RESPONSIVE ═══════════════════════════════════════════════════ */
+    /* ══ HAMBURGER ═════════════════════════════════════════════════════ */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: .4rem;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--dark); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; top: 0;
+      background: var(--bg);
+      z-index: 400;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 2.4rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; font-style: italic;
+      color: var(--dark); text-decoration: none;
+      letter-spacing: .04em;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-social {
+      display: flex; gap: 1.5rem; margin-top: 1rem;
+    }
+    .mobile-menu-social a {
+      font-size: .65rem !important; font-style: normal !important;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--muted) !important;
+    }
+
     @media (max-width: 900px) {
       .nav { padding: 1.1rem 1.5rem; }
       .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
       .hero { padding: 0 .5rem; }
       .hero img { max-height: 55vw; }
       .info-strip { grid-template-columns: 1fr 1fr; }
@@ -565,7 +615,7 @@
 
 <!-- ══ ANNOUNCEMENT BAR ══════════════════════════════════════════════ -->
 <div class="announce">
-  เวลาว่าง กาแฟ เบเกอรี่ ขนมปัง และ งานคราฟ · เปิดทุกวัน 08:00–18:00 · คลองสามวา กรุงเทพฯ
+  <span class="announce-inner">เวลาว่าง &nbsp;·&nbsp; กาแฟ เบเกอรี่ ขนมปัง และ งานคราฟ &nbsp;·&nbsp; เปิดทุกวัน 08:00–18:00 &nbsp;·&nbsp; คลองสามวา กรุงเทพฯ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เวลาว่าง &nbsp;·&nbsp; กาแฟ เบเกอรี่ ขนมปัง และ งานคราฟ &nbsp;·&nbsp; เปิดทุกวัน 08:00–18:00 &nbsp;·&nbsp; คลองสามวา กรุงเทพฯ</span>
 </div>
 
 
@@ -585,7 +635,23 @@
     <a href="https://www.facebook.com/waylawangcafe" target="_blank" rel="noopener" class="nav-cta">Facebook →</a>
     <a href="https://www.tiktok.com/@waylawangcafe" target="_blank" rel="noopener" class="nav-cta">TikTok →</a>
   </div>
+  <button class="hamburger" id="hamburger" aria-label="เมนู">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- ══ MOBILE MENU ═══════════════════════════════════════════════════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about"   onclick="closeMobileMenu()">About</a>
+  <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+  <a href="#find-us" onclick="closeMobileMenu()">Find Us</a>
+  <a href="#blog"    onclick="closeMobileMenu()">Blog</a>
+  <a href="#delivery" onclick="closeMobileMenu()">Delivery</a>
+  <div class="mobile-menu-social">
+    <a href="https://www.facebook.com/waylawangcafe" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.tiktok.com/@waylawangcafe" target="_blank" rel="noopener">TikTok</a>
+  </div>
+</div>
 
 
 <!-- ══ HERO — full-width photo ════════════════════════════════════════ -->
@@ -1014,6 +1080,20 @@ document.getElementById('blogModal').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeBlog();
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBlog(); });
+
+/* ── Hamburger / Mobile Menu ──────────────────────────────────────── */
+const hamburger   = document.getElementById('hamburger');
+const mobileMenu  = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileMenu() {
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
 </script>
 
 </body>
