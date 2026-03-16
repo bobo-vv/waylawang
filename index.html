@@ -458,6 +458,49 @@
     .find-row-val { font-size: .88rem; line-height: 1.9; color: rgba(255,255,255,.62); }
     .find-row-val a:hover { color: var(--gold2); }
 
+    /* ══ DELIVERY ══════════════════════════════════════════════════════ */
+    .delivery {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 3rem;
+      text-align: center;
+    }
+    .delivery-eyebrow {
+      display: block;
+      font-size: .6rem; letter-spacing: .38em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .delivery-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600; font-style: italic;
+      color: var(--dark); margin-bottom: .6rem; line-height: 1.1;
+    }
+    .delivery-sub {
+      font-size: .78rem; color: var(--muted); margin-bottom: 2.8rem;
+      letter-spacing: .04em;
+    }
+    .delivery-btns {
+      display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+    }
+    .delivery-btn {
+      display: inline-flex; align-items: center; gap: .7rem;
+      padding: .95rem 2.4rem;
+      font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      font-weight: 600; border-radius: 2px;
+      transition: opacity .25s, transform .25s;
+      text-decoration: none;
+    }
+    .delivery-btn:hover { opacity: .85; transform: translateY(-2px); }
+    .delivery-btn.lineman {
+      background: #06C755; color: #fff;
+    }
+    .delivery-btn.grab {
+      background: #00B14F; color: #fff;
+    }
+    .delivery-btn svg { flex-shrink: 0; }
+
     /* ══ FOOTER ════════════════════════════════════════════════════════ */
     footer {
       border-top: 1px solid var(--border);
@@ -536,6 +579,7 @@
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#find-us">Find Us</a></li>
     <li><a href="#blog">Blog</a></li>
+    <li><a href="#delivery">Delivery</a></li>
   </ul>
   <div style="display:flex;gap:.8rem;align-items:center">
     <a href="https://www.facebook.com/waylawangcafe" target="_blank" rel="noopener" class="nav-cta">Facebook →</a>
@@ -831,6 +875,24 @@
         </span>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ══ DELIVERY ═══════════════════════════════════════════════════════ -->
+<section class="delivery r" id="delivery">
+  <span class="delivery-eyebrow">Order Online · สั่งเดลิเวอรี่</span>
+  <h2 class="delivery-title">สั่งถึงบ้าน<br>ได้แล้ววันนี้</h2>
+  <p class="delivery-sub">เวลาว่าง พร้อมส่งถึงคุณ · คลองสามวา และพื้นที่ใกล้เคียง</p>
+  <div class="delivery-btns">
+    <a href="https://wongn.ai/228qJH" target="_blank" rel="noopener" class="delivery-btn lineman">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0" fill="currentColor"/></svg>
+      LINE MAN
+    </a>
+    <a href="https://r.grab.com/g/6-20260317_010131_d8e3275d9cc741bfafbf117a6583accf_MEXMPS-3-C353GAEUARMDVN" target="_blank" rel="noopener" class="delivery-btn grab">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.055 4.888c3.705 0 6.664 2.474 6.664 5.557 0 .34-.036.674-.102 1h-4.066v-1h2.984c-.444-2.03-2.498-3.557-4.948-3.557-1.458 0-2.773.527-3.712 1.383L7.51 6.916A6.777 6.777 0 0 1 12.055 4.888zm0 14.224c-3.705 0-6.664-2.474-6.664-5.557 0-.339.036-.673.102-1h4.066v1H6.576c.444 2.03 2.498 3.557 4.948 3.557 1.458 0 2.773-.527 3.712-1.383l1.365 1.355a6.777 6.777 0 0 1-4.546 1.028z" fill="currentColor"/></svg>
+      Grab Food
+    </a>
   </div>
 </section>
 
